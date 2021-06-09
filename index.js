@@ -4,6 +4,7 @@ const ytdl = require("ytdl-core");
 // const { prefix, token, youtubeAPIKey } = require("./config.json");
 require('dotenv').config();
 
+// Environment variable used for keys.
 const prefix = process.env.PREFIX;
 const token = process.env.DISCORD_BOT_TOKEN;
 const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
