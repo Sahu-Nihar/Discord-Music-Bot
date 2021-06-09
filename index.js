@@ -1,6 +1,13 @@
 const Discord = require("discord.js");
-const { prefix, token, youtubeAPIKey } = require("./config.json");
 const ytdl = require("ytdl-core");
+
+// const { prefix, token, youtubeAPIKey } = require("./config.json");
+require('dotenv').config();
+
+const prefix = process.env.PREFIX;
+const token = process.env.DISCORD_BOT_TOKEN;
+const youtubeAPIKey = process.env.YOUTUBE_API_KEY;
+
 const Youtube = require('simple-youtube-api');
 const youtube = new Youtube(youtubeAPIKey);
 
