@@ -128,6 +128,7 @@ async function execute(message, serverQueue) {
         let playSongByNameResponse = await playByName(nameOrUrl, voiceChannel);
         if (playSongByNameResponse.success == false) {
             console.log("*******playSongByNameResponse*******",playSongByNameResponse);
+            return message.channel.send(playSongByNameResponse.message);
         }
         songObject = playSongByNameResponse.data;
     }
