@@ -54,7 +54,14 @@ async function playByName(searchQueryByName, voiceChannel) {
 
         const videos = await youtube.searchVideos(searchQueryByName, 5);
 
-        console.log('List of al videos searched:', videos);
+        console.log('List of all videos searched:', videos);
+
+        if (videos.length == 0) {
+            return {
+                success: false,
+                message: 'Searched name returned empty list, No song found!'
+            }
+        }
 
         var video = await youtube.getVideoByID(videos[0].id);
 
