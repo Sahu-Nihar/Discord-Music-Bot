@@ -27,6 +27,7 @@ module.exports = {
             if (ytdl.validateURL(args[0])) {
                 const song_info = await ytdl.getInfo(args[0]);
                 song = { title: song_info.videoDetails.title, url: song_info.videoDetails.video_url };
+                console.log('Song requested:', song);
             } else {
                 const video_finder = async (query) => {
                     const videoResult = await ytSearch(query);
@@ -94,7 +95,10 @@ const video_player = async (guild, song) => {
 const skip_song = (message, server_queue) => {
     if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
     if (!server_queue) return message.channel.send(`❌ | There is no songs in queue`);
-    server_queue.connection.dispatcher.end();
+    if (server_queue.connection.dispatcher != null) {
+        console.log('server queue:', server_queue, "server_queue.connection.dispatcher:", server_queue.connection.dispatcher);
+        server_queue.connection.dispatcher.end();
+    }
 }
 
 const stop_song = (message, server_queue) => {
